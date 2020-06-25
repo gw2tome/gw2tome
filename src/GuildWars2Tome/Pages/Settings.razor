@@ -1,0 +1,17 @@
+﻿@page "/settings"
+
+<h1>Settings</h1>
+
+<EditForm Model="formModel" OnValidSubmit="HandleValidSaveSubmit">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label for="apiKey">API Key</label>
+        <InputText id="apiKey" @bind-Value="formModel.ApiKey" class="form-control mr-sm-2" placeholder="Search for user by email" />
+        <small id="emailHelp" class="form-text text-muted">Stored locally in your browser.</small>
+        <ValidationMessage For="() => formModel.ApiKey" />
+    </div>
+    
+    <button type="submit" class="btn btn-primary mr-sm-2">
+        <span class="oi oi-magnifying-glass"></span> Save
+    </button>
+</EditForm>
