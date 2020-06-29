@@ -5,15 +5,13 @@
     <NavMenu />
 </header>
 
-<div class="main">
-    <div class="content p-4">
-        @Body
-    </div>
+<div class="main p-4">
+    @Body
 </div>
 
 @code {
     protected override async Task OnInitializedAsync()
     {
-        await this.BootstrapCss.SetBootstrapCss(BlazorStrap.Theme.Slate, "4.3.1");
+        await this.BootstrapCss.SetBootstrapCss(BlazorStrap.Theme.Darkly, "4.5.0");
     }
 }
