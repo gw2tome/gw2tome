@@ -6,5 +6,7 @@ namespace GuildWars2Tome.Models
     {
         [Required]
         public string ApiKey { get; set; }
+
+        public string GuildId { get; set; }
     }
 }

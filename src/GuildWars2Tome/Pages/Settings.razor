@@ -6,11 +6,16 @@
     <DataAnnotationsValidator />
     <div class="form-group">
         <label for="apiKey">API Key</label>
-        <InputText id="apiKey" @bind-Value="formModel.ApiKey" class="form-control mr-sm-2" placeholder="Search for user by email" />
+        <InputText id="apiKey" @bind-Value="formModel.ApiKey" class="form-control mr-sm-2" placeholder="Guild Wars 2 API key" />
         <small id="emailHelp" class="form-text text-muted">Stored locally in your browser.</small>
         <ValidationMessage For="() => formModel.ApiKey" />
     </div>
-    
+
+    <div class="form-group">
+        <label for="guildId">Guild</label>
+        <InputText id="apiKey" @bind-Value="formModel.GuildId" class="form-control mr-sm-2" placeholder="Select guild for guild functions" />
+    </div>
+
     <button type="submit" class="btn btn-primary mr-sm-2">
         <span class="oi oi-magnifying-glass"></span> Save
     </button>

@@ -20,11 +20,13 @@ namespace GuildWars2Tome.Pages
         protected override async Task OnInitializedAsync()
         {
             this.formModel.ApiKey = await this.JS.LocalStorageGet<string>(StorageKeys.SettingsApiKey);
+            this.formModel.GuildId = await this.JS.LocalStorageGet<string>(StorageKeys.SettingsGuildId);
         }
 
         private async Task HandleValidSaveSubmit()
         {
             await this.JS.LocalStorageSet(StorageKeys.SettingsApiKey, formModel.ApiKey);
+            await this.JS.LocalStorageSet(StorageKeys.SettingsGuildId, formModel.GuildId);
         }
     }
 }
