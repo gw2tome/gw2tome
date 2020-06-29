@@ -1,13 +1,10 @@
 using System;
 using System.Net.Http;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using BlazorStrap;
+using GuildWars2Tome.Models.GuidWarsApi;
 
 namespace GuildWars2Tome
 {
@@ -19,6 +16,10 @@ namespace GuildWars2Tome
             builder.RootComponents.Add<App>("app");
             builder.Services.AddBootstrapCss();
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddTransient(sp => {
+                var client = new HttpClient { BaseAddress = new Uri("https://api.guildwars2.com/") };
+                return new GuildWarsApiClient(client);
+            });
             await builder.Build().RunAsync();
         }
     }
