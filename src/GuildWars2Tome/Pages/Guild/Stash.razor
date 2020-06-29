@@ -1,0 +1,41 @@
+﻿@page "/guild/stash"
+
+<h3>Guild Stash</h3>
+
+@if (stashes == null || stashes.Count() == 0)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @foreach (var stash in stashes)
+    {
+        <div class="card">
+            <div class="card-header">
+                <img src="@stash.Icon" class="float-left mr-1" />
+                @stash.Name<br />Coins: @stash.Coins
+            </div>
+            <div class="card-body">
+                <p>@stash.Note</p>
+                <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start; align-content: flex-start; width: 100%; ">
+                    @foreach (var item in stash.Items)
+                    {
+                        <div style="height: 100px; width: 64px;">
+                            @if (string.IsNullOrWhiteSpace(item.Icon))
+                            {
+                                <div class="text-center pt-3" style="font-size: 0.8em; height: 64px; width: 64px;">
+                                    Empty
+                                </div>
+                            }
+                            else
+                            {
+                                <img src="@item.Icon" title="@item.Name" style="max-width: 64px;" />
+                            }
+                            <div class="text-center">@item.Count</div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}

@@ -18,10 +18,18 @@ namespace GuildWars2Tome.Models.GuidWarsApi
 
         public string Key { get; set; }
 
+        #region API Calls - Guilds
+
         public Task<GuildLog[]> GetGuildLogAsync(string guildId)
         {
             this.EnsureAuthorization();
             return this.client.GetFromJsonAsync<GuildLog[]>($"v2/guild/{guildId}/log?access_token={this.Key}");
+        }
+
+        public Task<GuildStash[]> GetGuildStashAsync(string guildId)
+        {
+            this.EnsureAuthorization();
+            return this.client.GetFromJsonAsync<GuildStash[]>($"v2/guild/{guildId}/stash?access_token={this.Key}");
         }
 
         public Task<GuildUpgrade[]> GetGuildUpgradeAsync(IEnumerable<int> idList)
@@ -29,6 +37,8 @@ namespace GuildWars2Tome.Models.GuidWarsApi
             var list = this.JoinItems(idList);
             return this.client.GetFromJsonAsync<GuildUpgrade[]>($"v2/guild/upgrades?ids={list}");
         }
+
+        #endregion
 
         public Task<Item[]> GetItemAsync(IEnumerable<int> idList)
         {
