@@ -18,6 +18,44 @@ app #app-loader img {
     width: 30%;
 }
 
+.item-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 100%;
+}
+
+    .item-container .item {
+        border: 1px solid #000;
+        height: 100px;
+        margin: 0.25em;
+        width: 64px;
+    }
+        .item-container .item.item-short {
+            height: 88px;
+        }
+
+        .item-container .item .item-icon {
+            max-width: 64px;
+        }
+
+            .item-container .item .item-icon.item-empty {
+                background: #222;
+                font-size: 0.9em;
+                height: 64px;
+                width: 64px;
+                padding-top: 3em;
+                text-align: center;
+            }
+
+        .item-container .item .item-label {
+            font-size: 0.9em;
+            text-align: center;
+        }
+
 #blazor-error-ui {
     background: lightyellow;
     bottom: 0;

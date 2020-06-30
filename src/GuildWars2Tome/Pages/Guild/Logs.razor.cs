@@ -29,8 +29,8 @@ namespace GuildWars2Tome.Pages.Guild
                 var logs = await this.GuildWarsClient.GetGuildLogAsync(guildId);
                 var itemIds = logs.Where(x => x.ItemId.HasValue && x.ItemId.Value > 0).Select(x => x.ItemId.Value).Distinct().AsParallel();
                 var upgradeIds = logs.Where(x => x.UpgradeId.HasValue && x.UpgradeId.Value > 0).Select(x => x.UpgradeId.Value).Distinct().AsParallel();
-                var items = await this.GuildWarsClient.GetItemAsync(itemIds);
-                var upgrades = await this.GuildWarsClient.GetGuildUpgradeAsync(upgradeIds);
+                var items = await this.GuildWarsClient.GetItemsAsync(itemIds);
+                var upgrades = await this.GuildWarsClient.GetGuildUpgradesAsync(upgradeIds);
                 var orderedList = logs.Where(x => x.LogType != "influence").OrderByDescending(x => x.Datestamp);
                 foreach (var log in orderedList)
                 {

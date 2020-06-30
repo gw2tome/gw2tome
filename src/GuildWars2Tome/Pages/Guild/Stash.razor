@@ -17,21 +17,19 @@ else
             </div>
             <div class="card-body">
                 <p>@stash.Note</p>
-                <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; align-items: flex-start; align-content: flex-start; width: 100%; ">
+                <div class="item-container">
                     @foreach (var item in stash.Items)
                     {
-                        <div style="height: 100px; width: 64px;">
+                        <div class="item item-short">
                             @if (string.IsNullOrWhiteSpace(item.Icon))
                             {
-                                <div class="text-center pt-3" style="font-size: 0.8em; height: 64px; width: 64px;">
-                                    Empty
-                                </div>
+                                <div class="item-icon item-empty"></div>
                             }
                             else
                             {
-                                <img src="@item.Icon" title="@item.Name" style="max-width: 64px;" />
+                                <img src="@item.Icon" title="@item.Name" class="item-icon" />
                             }
-                            <div class="text-center">@item.Count</div>
+                            <div class="item-label">@item.Count</div>
                         </div>
                     }
                 </div>
