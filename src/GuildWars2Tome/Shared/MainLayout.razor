@@ -1,5 +1,4 @@
 ﻿@inherits LayoutComponentBase
-@inject BlazorStrap.IBootstrapCss BootstrapCss
 
 <header>
     <NavMenu />
@@ -8,10 +7,3 @@
 <div class="main p-4">
     @Body
 </div>
-
-@code {
-    protected override async Task OnInitializedAsync()
-    {
-        await this.BootstrapCss.SetBootstrapCss(BlazorStrap.Theme.Darkly, "4.5.0");
-    }
-}
