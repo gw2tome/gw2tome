@@ -1,10 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>GW2 Tome</title>
+    <title>Offline | GW2 Tome</title>
     <base href="/" />
     <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-Bo21yfmmZuXwcN/9vKrA5jPUMhr7znVBBeLxT9MA4r2BchhusfJ6+n8TLGUcRAtL" crossorigin="anonymous">
     <link href="css/app.css" rel="stylesheet" />
@@ -18,25 +17,13 @@
     <meta name="msapplication-TileColor" content="#b02025">
     <meta name="theme-color" content="#b02025">
 </head>
-
 <body>
-    <app>
-        <div id="app-loader">
-            <div class="mb-3"><img src="img/logo.png" /></div>
-            <div class="spinner-border" role="status"></div>
-            <div>Loading...</div>
+    <div class="text-center">
+        <div><img src="img/logo.png" style="width: 30%" /></div>
+        <h1 class="mt-3">No Connection</h1>
+        <div>
+            Please restore internet connection and retry.
         </div>
-    </app>
-
-    <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
     </div>
-    <script src="_content/BlazorStrap/blazorStrap.js"></script>
-    <script src="_framework/blazor.webassembly.js"></script>
-    <script src="js/helpers.js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>
-
 </html>

@@ -1,11 +1,7 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 app #app-loader {
-    background-color: #b02025;
-    background-image: url('../img/logo.png');
-    background-repeat: no-repeat;
-    background-position: center; 
-    background-size: 30%;
+    background: #b02025;
     height: 100%;
     left: 0;
     padding-top: 5%;
@@ -15,6 +11,12 @@ app #app-loader {
     text-align: center;
     top: 0;
     width: 100%;
+}
+
+app #app-loader img {
+    height: 30%;
+    margin-bottom: 2em;
+    width: 30%;
 }
 
 #blazor-error-ui {
