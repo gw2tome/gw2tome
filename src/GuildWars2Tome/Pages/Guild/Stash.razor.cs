@@ -1,6 +1,6 @@
 ﻿using GuildWars2Tome.Extensions;
 using GuildWars2Tome.Models;
-using GuildWars2Tome.Models.GuidWarsApi;
+using JK.GuildWars2Api;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace GuildWars2Tome.Pages.Guild
     public partial class Stash
     {
         [Inject]
-        protected GuildWarsApiClient GuildWarsClient { get; set; }
+        protected IGuildWars2ApiClient GuildWarsClient { get; set; }
 
         [Inject]
         protected IJSRuntime JS { get; set; }
@@ -26,9 +26,9 @@ namespace GuildWars2Tome.Pages.Guild
             {
                 this.GuildWarsClient.Key = key;
                 var guildId = await JS.LocalStorageGet<string>(StorageKeys.SettingsGuildId);
-                var stashes = await this.GuildWarsClient.GetGuildStashAsync(guildId);
+                var stashes = await this.GuildWarsClient.V2.GetGuildStashAsync(guildId);
                 var upgradeIds = stashes.Where(x => x.UpgradeId > 0).Select(x => x.UpgradeId).Distinct().AsParallel();
-                var upgrades = await this.GuildWarsClient.GetGuildUpgradesAsync(upgradeIds);
+                var upgrades = await this.GuildWarsClient.V2.GetGuildUpgradesAsync(upgradeIds);
 
                 foreach (var stashApi in stashes)
                 {
@@ -36,7 +36,7 @@ namespace GuildWars2Tome.Pages.Guild
                     var stash = new Models.Stash(stashApi, upgrade);
 
                     var itemIds = stashApi.Inventory.Where(x => x != null).Select(x => x.Id).Distinct().AsParallel();
-                    var items = await this.GuildWarsClient.GetItemsAsync(itemIds);
+                    var items = await this.GuildWarsClient.V2.GetItemsAsync(itemIds);
 
                     foreach (var inventoryItem in stashApi.Inventory)
                     {

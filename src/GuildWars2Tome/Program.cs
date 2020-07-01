@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using BlazorStrap;
-using GuildWars2Tome.Models.GuidWarsApi;
+using JK.GuildWars2Api;
 
 namespace GuildWars2Tome
 {
@@ -16,7 +16,7 @@ namespace GuildWars2Tome
             builder.RootComponents.Add<App>("app");
             builder.Services.AddBootstrapCss();
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddTransient(sp => new GuildWarsApiClient(new HttpClient()) );
+            builder.Services.AddTransient<IGuildWars2ApiClient>(sp => new GuildWars2ApiClient(new HttpClient()));
             await builder.Build().RunAsync();
         }
     }

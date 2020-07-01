@@ -1,4 +1,4 @@
-﻿using GuildWars2Tome.Models.GuidWarsApi;
+﻿using JK.GuildWars2Api.V2;
 using System.Collections.Generic;
 
 namespace GuildWars2Tome.Models

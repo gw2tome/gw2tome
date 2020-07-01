@@ -1,6 +1,6 @@
 ﻿using GuildWars2Tome.Extensions;
 using GuildWars2Tome.Models;
-using GuildWars2Tome.Models.GuidWarsApi;
+using JK.GuildWars2Api;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Collections.Concurrent;
@@ -15,7 +15,7 @@ namespace GuildWars2Tome.Pages.Guild
         private IEnumerable<Rank> ranks = new List<Rank>();
 
         [Inject]
-        protected GuildWarsApiClient GuildWarsClient { get; set; }
+        protected IGuildWars2ApiClient GuildWarsClient { get; set; }
 
         [Inject]
         protected IJSRuntime JS { get; set; }
@@ -27,9 +27,9 @@ namespace GuildWars2Tome.Pages.Guild
             {
                 this.GuildWarsClient.Key = key;
                 var guildId = await JS.LocalStorageGet<string>(StorageKeys.SettingsGuildId);
-                var guildRanks = await this.GuildWarsClient.GetGuildRanksAsync(guildId);
+                var guildRanks = await this.GuildWarsClient.V2.GetGuildRanksAsync(guildId);
                 var permissionIds = guildRanks.SelectMany(x => x.Permissions).Distinct().AsParallel();
-                var permissions = await this.GuildWarsClient.GetGuildPermissionsAsync(permissionIds);
+                var permissions = await this.GuildWarsClient.V2.GetGuildPermissionsAsync(permissionIds);
                 var unorderedRanks = new ConcurrentBag<Rank>();
                 Parallel.ForEach(guildRanks, guildRank =>
                 {

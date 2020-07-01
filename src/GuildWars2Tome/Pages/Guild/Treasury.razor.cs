@@ -1,6 +1,6 @@
 ﻿using GuildWars2Tome.Extensions;
 using GuildWars2Tome.Models;
-using GuildWars2Tome.Models.GuidWarsApi;
+using JK.GuildWars2Api;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Collections.Concurrent;
@@ -13,7 +13,7 @@ namespace GuildWars2Tome.Pages.Guild
     public partial class Treasury
     {
         [Inject]
-        protected GuildWarsApiClient GuildWarsClient { get; set; }
+        protected IGuildWars2ApiClient GuildWarsClient { get; set; }
 
         [Inject]
         protected IJSRuntime JS { get; set; }
@@ -27,9 +27,9 @@ namespace GuildWars2Tome.Pages.Guild
             {
                 this.GuildWarsClient.Key = key;
                 var guildId = await JS.LocalStorageGet<string>(StorageKeys.SettingsGuildId);
-                var treasuries = await this.GuildWarsClient.GetGuildTreasuryAsync(guildId);
+                var treasuries = await this.GuildWarsClient.V2.GetGuildTreasuryAsync(guildId);
                 var itemIds = treasuries.Where(x => x.ItemId > 0).Select(x => x.ItemId).Distinct().AsParallel();
-                var items = await this.GuildWarsClient.GetItemsAsync(itemIds);
+                var items = await this.GuildWarsClient.V2.GetItemsAsync(itemIds);
                 var bag = new ConcurrentBag<TreasuryItem>();
                 Parallel.ForEach(treasuries, treasury =>
                 {

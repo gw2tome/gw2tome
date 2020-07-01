@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace GuildWars2Tome.Models.GuidWarsApi
+namespace JK.GuildWars2Api.V1
 {
     public class GuildEmblem
     {

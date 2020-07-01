@@ -1,6 +1,6 @@
 ﻿using GuildWars2Tome.Extensions;
 using GuildWars2Tome.Models;
-using GuildWars2Tome.Models.GuidWarsApi;
+using JK.GuildWars2Api;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace GuildWars2Tome.Pages.Guild
         private IEnumerable<Member> members = new List<Member>();
 
         [Inject]
-        protected GuildWarsApiClient GuildWarsClient { get; set; }
+        protected IGuildWars2ApiClient GuildWarsClient { get; set; }
 
         [Inject]
         protected IJSRuntime JS { get; set; }
@@ -26,7 +26,7 @@ namespace GuildWars2Tome.Pages.Guild
             {
                 this.GuildWarsClient.Key = key;
                 var guildId = await JS.LocalStorageGet<string>(StorageKeys.SettingsGuildId);
-                var guildMembers = await this.GuildWarsClient.GetGuildMembersAsync(guildId);
+                var guildMembers = await this.GuildWarsClient.V2.GetGuildMembersAsync(guildId);
                 this.members = guildMembers.Select(x => new Member(x)).OrderByDescending(x => x.Joined);
             }
         }

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace GuildWars2Tome.Models.GuidWarsApi
+namespace JK.GuildWars2Api.V2
 {
     public class Item
     {
@@ -42,14 +42,5 @@ namespace GuildWars2Tome.Models.GuidWarsApi
 
         [JsonPropertyName("details")]
         public ItemDetail Details { get; set; }
-    }
-
-    public class ItemDetail
-    {
-        [JsonPropertyName("no_sell_or_sort")]
-        public bool NoSellOrSort { get; set; }
-
-        [JsonPropertyName("size")]
-        public int Size { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using GuildWars2Tome.Extensions;
 using GuildWars2Tome.Models;
-using GuildWars2Tome.Models.GuidWarsApi;
+using JK.GuildWars2Api;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace GuildWars2Tome.Pages
         private bool loading = true;
 
         [Inject]
-        protected GuildWarsApiClient GuildWarsClient { get; set; }
+        protected IGuildWars2ApiClient GuildWarsClient { get; set; }
 
         [Inject]
         protected IJSRuntime JS { get; set; }
@@ -28,12 +28,12 @@ namespace GuildWars2Tome.Pages
             if (!string.IsNullOrWhiteSpace(apiKey))
             {
                 this.GuildWarsClient.Key = apiKey;
-                var account = await this.GuildWarsClient.GetAccountAsync();
+                var account = await this.GuildWarsClient.V2.GetAccountAsync();
                 var guildList = new List<ListItem<string>>();
                 var guildIdList = account.GuildLeader.Where(x => !string.IsNullOrWhiteSpace(x));
                 foreach (var guildId in guildIdList)
                 {
-                    var guild = await this.GuildWarsClient.GetGuildAsync(guildId);
+                    var guild = await this.GuildWarsClient.V1.GetGuildAsync(guildId);
                     guildList.Add(new ListItem<string> { Value = guild.Id, Text = guild.FullName });
                 }
                 guilds = guildList.OrderBy(x => x.Text);

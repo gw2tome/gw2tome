@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace GuildWars2Tome.Models.GuidWarsApi
+namespace JK.GuildWars2Api.V2
 {
     public class GuildLog
     {

@@ -1,6 +1,6 @@
 ﻿using GuildWars2Tome.Extensions;
 using GuildWars2Tome.Models;
-using GuildWars2Tome.Models.GuidWarsApi;
+using JK.GuildWars2Api;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace GuildWars2Tome.Pages.Guild
     public partial class Logs
     {
         [Inject]
-        protected GuildWarsApiClient GuildWarsClient { get; set; }
+        protected IGuildWars2ApiClient GuildWarsClient { get; set; }
 
         [Inject]
         protected IJSRuntime JS { get; set; }
@@ -26,11 +26,11 @@ namespace GuildWars2Tome.Pages.Guild
             {
                 this.GuildWarsClient.Key = key;
                 var guildId = await JS.LocalStorageGet<string>(StorageKeys.SettingsGuildId);
-                var logs = await this.GuildWarsClient.GetGuildLogAsync(guildId);
+                var logs = await this.GuildWarsClient.V2.GetGuildLogAsync(guildId);
                 var itemIds = logs.Where(x => x.ItemId.HasValue && x.ItemId.Value > 0).Select(x => x.ItemId.Value).Distinct().AsParallel();
                 var upgradeIds = logs.Where(x => x.UpgradeId.HasValue && x.UpgradeId.Value > 0).Select(x => x.UpgradeId.Value).Distinct().AsParallel();
-                var items = await this.GuildWarsClient.GetItemsAsync(itemIds);
-                var upgrades = await this.GuildWarsClient.GetGuildUpgradesAsync(upgradeIds);
+                var items = await this.GuildWarsClient.V2.GetItemsAsync(itemIds);
+                var upgrades = await this.GuildWarsClient.V2.GetGuildUpgradesAsync(upgradeIds);
                 var orderedList = logs.Where(x => x.LogType != "influence").OrderByDescending(x => x.Datestamp);
                 foreach (var log in orderedList)
                 {
