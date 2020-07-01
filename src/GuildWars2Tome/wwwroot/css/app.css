@@ -1,7 +1,12 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+:root {
+    --red: #b02025;
+    --item-width: 64px;
+}
+
 app #app-loader {
-    background: #b02025;
+    background: var(--red);
     height: 100%;
     left: 0;
     padding-top: 10%;
@@ -32,21 +37,21 @@ app #app-loader img {
         border: 1px solid #000;
         height: 100px;
         margin: 0.25em;
-        width: 64px;
+        width: var(--item-width);
     }
         .item-container .item.item-short {
             height: 88px;
         }
 
         .item-container .item .item-icon {
-            max-width: 64px;
+            max-width: var(--item-width);
         }
 
             .item-container .item .item-icon.item-empty {
                 background: #222;
                 font-size: 0.9em;
-                height: 64px;
-                width: 64px;
+                height: var(--item-width);
+                width: var(--item-width);
                 padding-top: 3em;
                 text-align: center;
             }
@@ -74,4 +79,3 @@ app #app-loader img {
     right: 0.75rem;
     top: 0.5rem;
 }
-
