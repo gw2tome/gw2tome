@@ -8,12 +8,16 @@
 }
 else
 {
+    <div class="alert alert-info">
+        All settings are stored locally in your browser.
+    </div>
+
     <EditForm Model="formModel" OnValidSubmit="HandleValidSaveSubmit">
         <DataAnnotationsValidator />
         <div class="form-group">
             <label for="apiKey">API Key</label>
             <InputText id="apiKey" @bind-Value="formModel.ApiKey" class="form-control mr-sm-2" placeholder="Guild Wars 2 API key" />
-            <small id="emailHelp" class="form-text text-muted">Stored locally in your browser.</small>
+            
             <ValidationMessage For="() => formModel.ApiKey" />
         </div>
 
