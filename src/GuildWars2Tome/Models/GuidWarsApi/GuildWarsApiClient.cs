@@ -44,6 +44,18 @@ namespace GuildWars2Tome.Models.GuidWarsApi
             return this.client.GetFromJsonAsync<GuildMember[]>($"v2/guild/{guildId}/members?access_token={this.Key}");
         }
 
+        public Task<GuildPermission[]> GetGuildPermissionsAsync(IEnumerable<string> ids)
+        {
+            var list = this.JoinItems(ids);
+            return this.client.GetFromJsonAsync<GuildPermission[]>($"v2/guild/permissions?ids={list}");
+        }
+
+        public Task<GuildRank[]> GetGuildRanksAsync(string guildId)
+        {
+            this.EnsureAuthorization();
+            return this.client.GetFromJsonAsync<GuildRank[]>($"v2/guild/{guildId}/ranks?access_token={this.Key}");
+        }
+
         public Task<GuildStash[]> GetGuildStashAsync(string guildId)
         {
             this.EnsureAuthorization();

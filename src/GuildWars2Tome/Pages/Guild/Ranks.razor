@@ -1,0 +1,30 @@
+﻿@page "/guild/ranks"
+
+<h3>Ranks</h3>
+
+@if (ranks == null || ranks.Count() == 0)
+{
+    <LoadingIndicator />
+}
+else
+{
+    @foreach (var rank in ranks)
+    {
+        <div class="card">
+            <div class="card-header">
+                <img src="@rank.Icon" class="float-left mr-1" />
+                @rank.Id
+            </div>
+            <div class="card-body">
+                <p>Permissions</p>
+                <dl>
+                    @foreach (var permission in rank.Permissions)
+                    {
+                        <dt>@permission.Name</dt>
+                        <dd>@permission.Description</dd>
+                    }
+                </dl>
+            </div>
+        </div>
+    }
+}
