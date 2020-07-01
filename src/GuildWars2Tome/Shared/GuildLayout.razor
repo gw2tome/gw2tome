@@ -1,0 +1,33 @@
+﻿@layout MainLayout
+@inherits LayoutComponentBase
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <NavLink class="nav-link" href="guild/logs">
+            <span class="oi oi-list-rich" aria-hidden="true"></span> Logs
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link" href="guild/stash">
+            <span class="oi oi-list-rich" aria-hidden="true"></span> Stash
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link" href="guild/treasury">
+            <span class="oi oi-list-rich" aria-hidden="true"></span> Treasury
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link" href="guild/members">
+            <span class="oi oi-list-rich" aria-hidden="true"></span> Members
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link" href="guild/ranks">
+            <span class="oi oi-list-rich" aria-hidden="true"></span> Ranks
+        </NavLink>
+    </li>
+</ul>
+<div class="tab-content">
+    @Body
+</div>

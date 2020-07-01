@@ -1,4 +1,5 @@
 ﻿@page "/guild/members"
+@layout GuildLayout
 
 <h3>Members</h3>
 
@@ -19,11 +20,11 @@ else
         <tbody>
             @foreach (var member in members)
             {
-            <tr>
-                <td>@member.Name</td>
-                <td>@member.Rank</td>
-                <td>@member.JoinedDisplay</td>
-            </tr>
+                <tr>
+                    <td>@member.Name</td>
+                    <td>@member.Rank</td>
+                    <td>@member.JoinedDisplay</td>
+                </tr>
             }
         </tbody>
     </table>
