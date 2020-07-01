@@ -14,11 +14,23 @@ namespace GuildWars2Tome.Models.GuidWarsApi
         public GuildWarsApiClient(HttpClient httpClient)
         {
             this.client = httpClient;
+            this.client.BaseAddress = new Uri("https://api.guildwars2.com/");
         }
 
         public string Key { get; set; }
 
+        public Task<Account> GetAccountAsync()
+        {
+            this.EnsureAuthorization();
+            return this.client.GetFromJsonAsync<Account>($"v2/account?access_token={this.Key}");           
+        }
+
         #region API Calls - Guilds
+
+        public Task<Guild> GetGuildAsync(string guildId)
+        {
+            return this.client.GetFromJsonAsync<Guild>($"v1/guild_details.json?guild_id={guildId}");
+        }
 
         public Task<GuildLog[]> GetGuildLogAsync(string guildId)
         {

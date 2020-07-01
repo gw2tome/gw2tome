@@ -16,10 +16,7 @@ namespace GuildWars2Tome
             builder.RootComponents.Add<App>("app");
             builder.Services.AddBootstrapCss();
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddTransient(sp => {
-                var client = new HttpClient { BaseAddress = new Uri("https://api.guildwars2.com/") };
-                return new GuildWarsApiClient(client);
-            });
+            builder.Services.AddTransient(sp => new GuildWarsApiClient(new HttpClient()) );
             await builder.Build().RunAsync();
         }
     }

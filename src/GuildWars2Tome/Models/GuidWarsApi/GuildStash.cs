@@ -19,13 +19,4 @@ namespace GuildWars2Tome.Models.GuidWarsApi
         [JsonPropertyName("inventory")]
         public GuildInventory[] Inventory { get; set; }
     }
-
-    public class GuildInventory
-    {
-        [JsonPropertyName("id")]
-        public int Id { get; set; }
-
-        [JsonPropertyName("count")]
-        public int Count { get; set; }
-    }
 }

@@ -40,19 +40,4 @@ namespace GuildWars2Tome.Models.GuidWarsApi
         [JsonPropertyName("costs")]
         public GuildUpgradeCost[] Costs { get; set; }
     }
-
-    public class GuildUpgradeCost
-    {
-        [JsonPropertyName("type")]
-        public string Type { get; set; }
-
-        [JsonPropertyName("count")]
-        public int Count { get; set; }
-
-        [JsonPropertyName("name")]
-        public string Name { get; set; }
-
-        [JsonPropertyName("item_id")]
-        public int ItemId { get; set; }
-    }
 }
