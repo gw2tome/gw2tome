@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>GW2 Tome</title>
+    <base href="/" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/united/bootstrap.min.css" integrity="sha384-Uga2yStKRHUWCS7ORqIZhJ9LIAv4i7gZuEdoR1QAmw6H+ffhcf7yCOd0CvSoNwoz" crossorigin="anonymous">
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="manifest.json" rel="manifest" />
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#e95420">
+    <meta name="apple-mobile-web-app-title" content="GW2 Tome">
+    <meta name="application-name" content="GW2 Tome">
+    <meta name="msapplication-TileColor" content="#e95420">
+    <meta name="theme-color" content="#e95420">
+</head>
+
+<body>
+    <app>
+        <div id="app-loader">
+            <div class="mb-3"><img src="img/logo.png" /></div>
+            <div class="spinner-border text-white" role="status"></div>
+            <div class="text-white">Loading...</div>
+        </div>
+    </app>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="https://kit.fontawesome.com/4b4ae42b74.js" crossorigin="anonymous"></script>
+    <script src="_content/BlazorStrap/blazorStrap.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="js/helpers.js"></script>
+    <script>navigator.serviceWorker.register('service-worker.js');</script>
+</body>
+
+</html>

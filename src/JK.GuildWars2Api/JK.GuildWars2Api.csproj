@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Company>Jeremy Knight</Company>
+    <Description>C# wrapper for the official Guild Wars 2 API. This wrapper aims to wrap the calls to the GW2 API and the conversion to POCOs.</Description>
+    <Copyright>Jeremy Knight</Copyright>
+    <Version>2.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Net.Http.Json" Version="3.2.1" />
+  </ItemGroup>
+
+</Project>

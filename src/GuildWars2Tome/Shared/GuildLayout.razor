@@ -1,0 +1,33 @@
+﻿@layout MainLayout
+@inherits LayoutComponentBase
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <NavLink class="nav-link" href="guild/logs">
+            <i class="fas fa-scroll"></i> Logs
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link" href="guild/stash">
+            <i class="fas fa-archive"></i> Stash
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link" href="guild/treasury">
+            <i class="fas fa-clipboard-check"></i> Treasury
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link" href="guild/members">
+            <i class="fas fa-address-book"></i> Members
+        </NavLink>
+    </li>
+    <li class="nav-item">
+        <NavLink class="nav-link" href="guild/ranks">
+            <i class="fas fa-user-lock"></i> Ranks
+        </NavLink>
+    </li>
+</ul>
+<div class="tab-content">
+    @Body
+</div>

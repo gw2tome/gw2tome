@@ -1,0 +1,37 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <NavLink class="navbar-brand" href="" Match="NavLinkMatch.All">GW2 Tome</NavLink>
+    <button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <i class="fas fa-home"></i> Home
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="guild/logs">
+                    <i class="fas fa-users"></i> Guild
+                </NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="settings">
+                    <i class="fas fa-cog"></i> Settings
+                </NavLink>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse navbar-collapse" : "navbar-collapse";
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

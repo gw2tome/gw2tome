@@ -1,0 +1,31 @@
+﻿@page "/guild/members"
+@layout GuildLayout
+
+<h3>Members</h3>
+
+@if (members == null || members.Count() == 0)
+{
+    <LoadingIndicator />
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Rank</th>
+                <th>Joined</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var member in members)
+            {
+                <tr>
+                    <td>@member.Name</td>
+                    <td>@member.Rank</td>
+                    <td>@member.JoinedDisplay</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

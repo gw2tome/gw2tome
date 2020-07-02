@@ -1,0 +1,92 @@
+﻿:root {
+    /*--red: #b02025;*/
+    --theme-color: #e95420;
+    --item-width: 64px;
+}
+
+app #app-loader {
+    background: var(--theme-color);
+    height: 100%;
+    left: 0;
+    padding-top: 10%;
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+
+    app #app-loader img {
+        height: 30%;
+        width: 30%;
+    }
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 100%;
+}
+
+    .item-container .item {
+        height: 100px;
+        margin: 0.25em;
+        width: var(--item-width);
+    }
+        .item-container .item .progress {
+            border-radius: 0;
+        }
+
+        .item-container .item.item-short {
+            height: 88px;
+        }
+
+        .item-container .item .item-icon {
+            max-width: var(--item-width);
+        }
+
+            .item-container .item .item-icon.item-empty {
+                background: #999;
+                font-size: 0.9em;
+                height: var(--item-width);
+                width: var(--item-width);
+                padding-top: 3em;
+                text-align: center;
+            }
+
+        .item-container .item .item-label {
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+/* --- Bootstrap Additions --------------- */
+
+.tab-content {
+    border: 1px solid #ddd;
+    border-top: 0;
+    margin-bottom: 1em;
+    padding: 1em;
+}
