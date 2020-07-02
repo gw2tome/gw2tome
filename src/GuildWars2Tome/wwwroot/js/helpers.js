@@ -1,8 +1,10 @@
 ﻿var gw2tome = {
     localStorageGet: function (key) {
-        return localStorage.getItem(key);
+        let value = localStorage.getItem(key);
+        return value == null ? null : JSON.parse(value);
     },
     localStorageSet: function (key, value) {
-        localStorage.setItem(key, value);
+        let json = JSON.stringify(value);
+        localStorage.setItem(key, json);
     }
 }

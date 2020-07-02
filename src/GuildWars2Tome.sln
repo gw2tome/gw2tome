@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuildWars2Tome", "GuildWars2Tome\GuildWars2Tome.csproj", "{753765AA-B5F6-42D2-BB7B-2D35A588DE1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JK.GuildWars2Api", "JK.GuildWars2Api\JK.GuildWars2Api.csproj", "{BFD9F6D1-9382-4833-B254-1697BB62AF86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JK.GuildWars2Api", "JK.GuildWars2Api\JK.GuildWars2Api.csproj", "{BFD9F6D1-9382-4833-B254-1697BB62AF86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

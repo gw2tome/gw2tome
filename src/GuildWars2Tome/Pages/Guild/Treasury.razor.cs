@@ -22,11 +22,11 @@ namespace GuildWars2Tome.Pages.Guild
 
         protected override async Task OnInitializedAsync()
         {
-            var key = await JS.LocalStorageGet<string>(StorageKeys.SettingsApiKey);
-            if (!string.IsNullOrWhiteSpace(key))
+            var token = await JS.GetApiKey();
+            if (!string.IsNullOrWhiteSpace(token?.Key ?? null))
             {
-                this.GuildWarsClient.Key = key;
-                var guildId = await JS.LocalStorageGet<string>(StorageKeys.SettingsGuildId);
+                this.GuildWarsClient.Key = token.Key;
+                var guildId = await JS.GetGuildId();
                 var treasuries = await this.GuildWarsClient.V2.GetGuildTreasuryAsync(guildId);
                 var itemIds = treasuries.Where(x => x.ItemId > 0).Select(x => x.ItemId).Distinct().AsParallel();
                 var items = await this.GuildWarsClient.V2.GetItemsAsync(itemIds);

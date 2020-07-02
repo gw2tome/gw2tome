@@ -69,5 +69,11 @@ namespace JK.GuildWars2Api.V2
             var list = this.JoinItems(idList);
             return this.Http.GetFromJsonAsync<Item[]>($"v2/items?ids={list}");
         }
+
+        public Task<TokenInfo> GetTokenInfo()
+        {
+            this.EnsureAuthorization();
+            return this.Http.GetFromJsonAsync<TokenInfo>($"v2/tokeninfo?access_token={this.Key}");
+        }
     }
 }
