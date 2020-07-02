@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
+    <Company>Jeremy Knight</Company>
+    <Authors>Jeremy Knight</Authors>
   </PropertyGroup>
 
   <ItemGroup>
