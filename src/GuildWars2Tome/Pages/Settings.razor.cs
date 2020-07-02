@@ -3,17 +3,15 @@ using GuildWars2Tome.Models;
 using JK.GuildWars2Api;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GuildWars2Tome.Pages
 {
     public partial class Settings
     {
-        private SettingsFormModel formModel = new SettingsFormModel();
-        private IEnumerable<ListItem<string>> guilds = new List<ListItem<string>>();
+        private SettingsApiKeyFormModel formModel = new SettingsApiKeyFormModel();
         private bool loading = true;
+        private ApiToken token = null;
 
         [Inject]
         protected IGuildWars2ApiClient GuildWarsClient { get; set; }
@@ -24,31 +22,22 @@ namespace GuildWars2Tome.Pages
         protected override async Task OnInitializedAsync()
         {
             this.loading = true;
-            var apiKey = await this.JS.LocalStorageGet<string>(StorageKeys.SettingsApiKey);
-            if (!string.IsNullOrWhiteSpace(apiKey))
+            var apiToken = await this.JS.GetApiKey();
+            if (!string.IsNullOrWhiteSpace(apiToken?.Key ?? null))
             {
-                this.GuildWarsClient.Key = apiKey;
-                var account = await this.GuildWarsClient.V2.GetAccountAsync();
-                var guildList = new List<ListItem<string>>();
-                var guildIdList = account.GuildLeader.Where(x => !string.IsNullOrWhiteSpace(x));
-                foreach (var guildId in guildIdList)
-                {
-                    var guild = await this.GuildWarsClient.V1.GetGuildAsync(guildId);
-                    guildList.Add(new ListItem<string> { Value = guild.Id, Text = guild.FullName });
-                }
-                guilds = guildList.OrderBy(x => x.Text);
+                this.token = apiToken;
+                this.formModel.ApiKey = apiToken.Key;
             }
 
-            this.formModel.ApiKey = apiKey;
-            this.formModel.GuildId = await this.JS.LocalStorageGet<string>(StorageKeys.SettingsGuildId);
             this.loading = false;
         }
 
         private async Task HandleValidSaveSubmit()
         {
-            await this.JS.LocalStorageSet(StorageKeys.SettingsApiKey, formModel.ApiKey);
-            var guildId = string.IsNullOrEmpty(formModel.GuildId) ? null : formModel.GuildId;
-            await this.JS.LocalStorageSet(StorageKeys.SettingsGuildId, guildId);
+            this.GuildWarsClient.Key = formModel.ApiKey;
+            var tokenInfo = await this.GuildWarsClient.V2.GetTokenInfo();
+            this.token = new ApiToken(formModel.ApiKey, tokenInfo);
+            await this.JS.SetApiKey(this.token);
         }
     }
 }

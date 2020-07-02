@@ -2,11 +2,9 @@
 
 namespace GuildWars2Tome.Models
 {
-    public class SettingsFormModel
+    public class SettingsApiKeyFormModel
     {
         [Required]
         public string ApiKey { get; set; }
-
-        public string GuildId { get; set; }
     }
 }
