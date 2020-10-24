@@ -1,0 +1,36 @@
+﻿<div class="card">
+    <div class="card-header">
+        Guild
+    </div>
+    <div class="card-body">
+        @if (loading)
+        {
+            <LoadingIndicator />
+        }
+        else if (hasGuildPermission)
+        {
+            <EditForm Model="formModel" OnValidSubmit="HandleValidSaveSubmit">
+                <DataAnnotationsValidator />
+                <div class="form-group">
+                    <label for="guildId" class="sr-only">Guild</label>
+                    <InputSelect id="guildId" @bind-Value="formModel.GuildId" class="form-control mr-sm-2">
+                        <option value="">- Select a Guild -</option>
+                        @foreach (var guild in guilds)
+                        {
+                            <option value="@guild.Value">@guild.Text</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="() => formModel.GuildId" class="invalid-feedback" />
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-sm-2">
+                    <i class="fas fa-save"></i> Save
+                </button>
+            </EditForm>
+        }
+        else
+        {
+            <p>This API Key does not have the 'guild' permission or you or not the leader of any guilds.</p>
+        }
+    </div>
+</div>

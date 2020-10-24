@@ -20,5 +20,6 @@ namespace JK.GuildWars2Api.V2
         #endregion
 
         Task<Item[]> GetItemsAsync(IEnumerable<int> idList);
+        Task<TokenInfo> GetTokenInfo();
     }
 }
