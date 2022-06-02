@@ -22,7 +22,7 @@ else
             @foreach (var log in logs)
             {
                 <tr>
-                    <td>@log.Datestamp.ToString("yyyy-MM-dd")</td>
+                    <td class="text-nowrap">@log.Datestamp.ToString("yyyy-MM-dd")</td>
                     <td>@log.LogType</td>
                     <td>@log.Message</td>
                     <td><img src="@log.ImageSource" title="" /></td>

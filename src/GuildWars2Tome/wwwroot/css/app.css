@@ -90,3 +90,11 @@ app #app-loader {
     margin-bottom: 1em;
     padding: 1em;
 }
+
+.stash .card-header button span:before {
+    content: "-";
+}
+
+.stash .card-header button.collapsed span:before {
+    content: "+";
+}

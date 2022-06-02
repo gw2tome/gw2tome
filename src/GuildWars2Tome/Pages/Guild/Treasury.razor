@@ -15,7 +15,7 @@ else
             <div class="item">
                 <img src="@item.Icon" title="@item.Name - @item.Count of @item.Needed" class="item-icon" />
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: @($"{item.PercentComplete}%");" aria-valuenow="@item.PercentComplete" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: @($"{item.PercentComplete}%");" aria-valuenow="@item.PercentComplete" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <div class="item-label">@item.PercentComplete %</div>
             </div>

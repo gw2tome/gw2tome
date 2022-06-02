@@ -9,14 +9,20 @@
 }
 else
 {
+    var i = 0;
     @foreach (var stash in stashes)
     {
-        <div class="card mb-3">
+        i++;
+        var id = $"collapse{i}";
+        <div class="stash card mb-3">
             <div class="card-header">
                 <img src="@stash.Icon" class="float-left mr-1" />
+                <button type="button" class="btn btn-secondary btn-sm" data-toggle="collapse" data-target="@($"#{id}")">
+                    <span></span>
+                </button>
                 @stash.Name<br />Coins: @stash.Coins
             </div>
-            <div class="card-body">
+            <div id="@id" class="card-body collapse show">
                 <p>@stash.Note</p>
                 <div class="item-container">
                     @foreach (var item in stash.Items)
