@@ -1,0 +1,20 @@
+{
+  "name": "GW2 Tome",
+  "short_name": "GW2 Tome",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#E95420",
+  "theme_color": "#E95420",
+  "icons": [
+    {
+      "src": "img/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
